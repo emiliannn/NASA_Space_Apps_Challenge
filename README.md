@@ -1,0 +1,7 @@
+Our project is a web-based dashboard designed to classify and analyze NASA bioscience publications using machine learning. Users can upload a CSV dataset, which the app processes to generate a data overview—including total documents, column count, and column names. It then applies TF-IDF for feature extraction and visualizes term importance via a bar chart. A pie chart displays predicted categories, along with model accuracy, training/test sample counts, and classification results. The prediction engine uses a Gradient Boosting model combined with TF-IDF and dynamic KMeans clustering, achieving high accuracy.
+
+The intended impact is to make decades of space biology research more accessible to scientists, agencies, and academic institutions by surfacing patterns and insights that are otherwise hard to detect. This supports future space exploration by helping researchers understand responses to space environments.
+
+We built the frontend using Angular, integrating interactive charts for clear data presentation. The backend handles data processing and machine learning tasks. Our tech stack includes Python(flask framework) for ML services, Angular for UI.
+
+Creatively, we combined multiple algorithms and visualization techniques to make complex data intuitive. We tested various models before selecting the most effective one. Our team prioritized usability, scientific relevance, and performance—ensuring the dashboard is both powerful and user-friendly.
