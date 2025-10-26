@@ -1,0 +1,30 @@
+<div class="upload-container">
+  <div class="upload-card">
+    <h3>📁 Upload Dataset</h3>
+    
+    <div class="upload-area">
+      <input 
+        type="file" 
+        accept=".csv" 
+        (change)="onFileSelected($event)"
+        id="fileInput"
+        class="file-input">
+      
+      <label for="fileInput" class="file-label">
+        <span class="upload-icon">⬆️</span>
+        <span>Choose CSV File</span>
+      </label>
+      
+      <button 
+        class="upload-btn" 
+        (click)="uploadFile()"
+        [disabled]="!selectedFile || uploading">
+        {{ uploading ? 'Uploading...' : 'Upload & Analyze' }}
+      </button>
+    </div>
+
+    <div class="message" [class.error]="isError" *ngIf="message">
+      {{ message }}
+    </div>
+  </div>
+</div>

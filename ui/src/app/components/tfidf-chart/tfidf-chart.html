@@ -1,0 +1,18 @@
+<div class="chart-container">
+  <canvas #chartCanvas width="600" height="400"></canvas>
+  
+  <div class="chart-info" *ngIf="data">
+    <div class="info-item">
+      <span class="label">Vocabulary Size:</span>
+      <span class="value">{{ data.vocabulary_size }}</span>
+    </div>
+    <div class="info-item">
+      <span class="label">Documents:</span>
+      <span class="value">{{ data.document_count }}</span>
+    </div>
+  </div>
+
+  <div *ngIf="!data" class="no-data">
+    No TF-IDF data available
+  </div>
+</div>

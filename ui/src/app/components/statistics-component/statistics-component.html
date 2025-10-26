@@ -1,0 +1,63 @@
+<div class="statistics-container" *ngIf="data">
+  <h2>Data Overview</h2>
+  
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">📊</div>
+      <div class="stat-content">
+        <div class="stat-label">Total Documents</div>
+        <div class="stat-value">{{ data.total_documents }}</div>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📋</div>
+      <div class="stat-content">
+        <div class="stat-label">Columns</div>
+        <div class="stat-value">{{ data.columns.length }}</div>
+      </div>
+    </div>
+
+    <div class="stat-card" *ngIf="data.text_statistics">
+      <div class="stat-icon">📝</div>
+      <div class="stat-content">
+        <div class="stat-label">Avg Title Length</div>
+        <div class="stat-value">{{ data.text_statistics.avg_length.toFixed(0) }}</div>
+      </div>
+    </div>
+
+    <div class="stat-card" *ngIf="data.year_distribution">
+      <div class="stat-icon">📅</div>
+      <div class="stat-content">
+        <div class="stat-label">Year Range</div>
+        <div class="stat-value">{{ yearLabels.length }} years</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="year-distribution" *ngIf="data.year_distribution">
+    <h3>Publications by Year</h3>
+    <div class="bar-chart">
+      <div class="bar-item" *ngFor="let year of yearLabels">
+        <div class="bar-label">{{ year }}</div>
+        <div class="bar-wrapper">
+          <div class="bar-fill" 
+               [style.width.%]="(data.year_distribution![year] / getMaxValue(data.year_distribution!)) * 100">
+            <span class="bar-value">{{ data.year_distribution![year] }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns-list">
+    <h3>Dataset Columns</h3>
+    <div class="column-tags">
+      <span class="column-tag" *ngFor="let col of data.columns">{{ col }}</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!data" class="no-data">
+  Loading statistics...
+</div>
